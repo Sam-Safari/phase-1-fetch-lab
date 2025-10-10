@@ -1,21 +1,26 @@
 // index.js
 
 function fetchBooks() {
-  // Return the fetch() call so tests can chain .then()
-  return fetch('https://anapioficeandfire.com/api/books')
+  // Return the fetch() call for the tests to chain .then()
+  return fetch("https://anapioficeandfire.com/api/books")
     .then(response => response.json())
-    .then(data => renderBooks(data)); // Pass data to renderBooks
+    .then(books => renderBooks(books));
 }
 
-// Provided helper function to render books into the DOM
 function renderBooks(books) {
-  const list = document.getElementById('book-list');
+  const bookList = document.getElementById("book-list");
+
   books.forEach(book => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = book.name;
-    list.appendChild(li);
+    bookList.appendChild(li);
   });
 }
 
-// Run automatically when DOM is loaded
-document.addEventListener('DOMContentLoaded', fetchBooks);
+// Ensure CodeGrade can run this in Node.js
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { fetchBooks, renderBooks };
+}
+
+// Automatically call when DOM loads
+document.addEventListener("DOMContentLoaded", fetchBooks);
