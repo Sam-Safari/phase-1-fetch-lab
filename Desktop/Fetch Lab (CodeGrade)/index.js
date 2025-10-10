@@ -1,7 +1,5 @@
-// index.js
-
 function fetchBooks() {
-  // Return the fetch() call for the tests to chain .then()
+  // ✅ Return the fetch() promise so tests can chain .then()
   return fetch("https://anapioficeandfire.com/api/books")
     .then(response => response.json())
     .then(books => renderBooks(books));
@@ -10,6 +8,9 @@ function fetchBooks() {
 function renderBooks(books) {
   const bookList = document.getElementById("book-list");
 
+  // ✅ Clear previous list if rerendered
+  bookList.innerHTML = "";
+
   books.forEach(book => {
     const li = document.createElement("li");
     li.textContent = book.name;
@@ -17,10 +18,10 @@ function renderBooks(books) {
   });
 }
 
-// Ensure CodeGrade can run this in Node.js
+// ✅ Export functions for Node (CodeGrade)
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { fetchBooks, renderBooks };
 }
 
-// Automatically call when DOM loads
+// ✅ Automatically run when DOM is loaded
 document.addEventListener("DOMContentLoaded", fetchBooks);
