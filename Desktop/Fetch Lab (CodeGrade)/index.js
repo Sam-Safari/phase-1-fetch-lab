@@ -1,21 +1,7 @@
-function fetchBooks() {
-  // ✅ Return the fetch() promise so tests can chain .then()
-  return fetch("https://anapioficeandfire.com/api/books")
-    .then(response => response.json())
-    .then(books => renderBooks(books));
-}
-
-function renderBooks(books) {
-  const bookList = document.getElementById("book-list");
-
-  // ✅ Clear previous list if rerendered
-  bookList.innerHTML = "";
-
-  books.forEach(book => {
-    const li = document.createElement("li")// index.js
+// index.js
 
 function fetchBooks() {
-  // ✅ Return the fetch promise for CodeGrade to test
+  // ✅ Always return the fetch() Promise
   return fetch("https://anapioficeandfire.com/api/books")
     .then(response => response.json())
     .then(books => {
@@ -27,10 +13,13 @@ function fetchBooks() {
 function renderBooks(books) {
   const bookList = document.getElementById("book-list");
 
-  if (!bookList) return; // ✅ Prevent Node test crash
+  // ✅ Skip rendering when no DOM exists (for Node tests)
+  if (!bookList) return;
 
+  // ✅ Clear list first
   bookList.innerHTML = "";
 
+  // ✅ Append book names
   books.forEach(book => {
     const li = document.createElement("li");
     li.textContent = book.name;
@@ -38,25 +27,12 @@ function renderBooks(books) {
   });
 }
 
-// ✅ Export functions for Node.js (CodeGrade)
+// ✅ Export for Node.js tests (CodeGrade)
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { fetchBooks, renderBooks };
 }
 
-// ✅ Run automatically only in browser
+// ✅ Auto-run only when in browser
 if (typeof window !== "undefined") {
   document.addEventListener("DOMContentLoaded", fetchBooks);
 }
-;
-    li.textContent = book.name;
-    bookList.appendChild(li);
-  });
-}
-
-// ✅ Export functions for Node (CodeGrade)
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { fetchBooks, renderBooks };
-}
-
-// ✅ Automatically run when DOM is loaded
-document.addEventListener("DOMContentLoaded", fetchBooks);
