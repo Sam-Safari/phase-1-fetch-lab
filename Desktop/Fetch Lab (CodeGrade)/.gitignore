@@ -1,3 +1,5 @@
+echo ".DS_Store" >> .gitignore
 echo "../" >> .gitignore
 echo "../../" >> .gitignore
-echo ".DS_Store" >> .gitignore
+echo ".vscode/" >> .gitignore
+echo ".Trash/" >> .gitignore
