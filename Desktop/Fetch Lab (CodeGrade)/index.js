@@ -1,33 +1,38 @@
+// index.js
+
 function fetchBooks() {
-  return fetch('https://anapioficeandfire.com/api/books')
+  // Return the fetch Promise so CodeGrade tests can chain .then()
+  return fetch("https://anapioficeandfire.com/api/books")
     .then(response => response.json())
     .then(data => {
       renderBooks(data);
-      return data; // Return for testing
+      return data; // Ensure the data is returned for testing
     });
 }
 
 function renderBooks(books) {
-  const bookList = document.getElementById('book-list');
+  const bookList = document.getElementById("book-list");
+
+  // Skip if running in Node (no document)
   if (!bookList) return;
 
-  bookList.innerHTML = '';
+  // Clear the list first
+  bookList.innerHTML = "";
 
+  // Render each book title
   books.forEach(book => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = book.name;
     bookList.appendChild(li);
   });
 }
 
-// Node.js environment for CodeGrade testing
-if (typeof module !== 'undefined' && module.exports) {
-  const fetch = require('node-fetch');
-  global.fetch = fetch;
+// Export for Node.js (CodeGrade tests)
+if (typeof module !== "undefined") {
   module.exports = { fetchBooks, renderBooks };
 }
 
-// Browser auto-run
-if (typeof window !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', fetchBooks);
+// Run automatically in browser
+if (typeof window !== "undefined") {
+  document.addEventListener("DOMContentLoaded", fetchBooks);
 }
