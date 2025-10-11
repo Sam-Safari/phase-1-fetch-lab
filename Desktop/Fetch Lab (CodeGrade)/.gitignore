@@ -1,5 +1,9 @@
-echo ".DS_Store" >> .gitignore
-echo "../" >> .gitignore
-echo "../../" >> .gitignore
-echo ".vscode/" >> .gitignore
-echo ".Trash/" >> .gitignore
+# Ignore node_modules
+node_modules/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore parent directories
+../
+../../
