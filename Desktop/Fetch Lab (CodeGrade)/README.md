@@ -1,25 +1,45 @@
-# ⚔️ Fetch Lab — Game of Thrones API
+# Fetch Lab
 
-## 📖 Overview
+## Overview
+This project demonstrates how to use JavaScript's `fetch()` method to retrieve data from a public API and render it dynamically on a webpage.
 
-This project demonstrates how to use the **`fetch()`** function in JavaScript to make web requests to an external API.  
-The lab uses the **Game of Thrones API (An API of Ice and Fire)** to fetch and display a list of book titles.
-
----
-
-## 🎯 Learning Goals
-
-- Use `fetch()` to make API requests.
-- Convert API responses from **JSON** into JavaScript objects.
-- Display the data dynamically on a webpage using **DOM manipulation**.
-- Understand how APIs expose data for developers.
-- Write clean, testable JavaScript (return the fetch for CodeGrade).
+We use the [Game of Thrones API](https://anapioficeandfire.com/api/books) to fetch a list of books and display their titles in the browser.
 
 ---
 
-## 🚀 Getting Started
+## Learning Goals
+- Use `fetch()` to make a web request.
+- Handle and convert a JSON response.
+- Dynamically update the DOM with fetched data.
+- Return Promises correctly for automated testing.
 
-### 1️⃣ Clone this repository
-```bash
-git clone https://github.com/<your-username>/fetch-lab.git
-cd fetch-lab
+---
+
+## Files
+- **index.html** – Sets up the webpage structure.
+- **index.js** – Contains all JavaScript logic.
+- **test_index.js** – Optional local test script.
+- **.gitignore** – Lists ignored files.
+- **LICENSE** – MIT License.
+
+---
+
+## Usage
+1. Clone this repository.
+2. Open `index.html` in your browser.
+3. The page will automatically fetch and display all Game of Thrones book titles.
+
+---
+
+## Technologies
+- HTML5
+- JavaScript (ES6)
+- Fetch API
+- JSON
+
+---
+
+## Author
+Developed by [Your Name].
+
+Licensed under the MIT License.
