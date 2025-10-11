@@ -1,38 +1,24 @@
-// index.js
-
+// Fetches the list of Game of Thrones books and renders them on the page
 function fetchBooks() {
-  // Use global.fetch explicitly so CodeGrade's spy can detect it in Node
-  const fetchFn = (typeof fetch !== "undefined") ? fetch : global.fetch;
-
-  // Return the fetch Promise for .then() chaining in tests
-  return fetchFn("https://anapioficeandfire.com/api/books")
-    .then(response => response.json())
-    .then(data => {
-      renderBooks(data);
-      return data; // Ensure data is returned for test chaining
-    });
+  // Always return the fetch promise so tests can chain .then()
+  return fetch('https://anapioficeandfire.com/api/books')
+    .then((response) => response.json())
+    .then((data) => renderBooks(data));
 }
 
+// Renders each book name as an <h2> element inside <main>
 function renderBooks(books) {
-  const bookList = typeof document !== "undefined" ? document.getElementById("book-list") : null;
+  const main = document.querySelector('main');
 
-  // Skip DOM updates in Node environment
-  if (!bookList) return;
+  // Clear the main element before adding
+  main.innerHTML = '';
 
-  bookList.innerHTML = "";
-  books.forEach(book => {
-    const li = document.createElement("li");
-    li.textContent = book.name;
-    bookList.appendChild(li);
+  books.forEach((book) => {
+    const h2 = document.createElement('h2');
+    h2.textContent = book.name;
+    main.appendChild(h2);
   });
 }
 
-// Export for Node.js (CodeGrade test environment)
-if (typeof module !== "undefined") {
-  module.exports = { fetchBooks, renderBooks };
-}
-
-// Run automatically in browser
-if (typeof window !== "undefined") {
-  document.addEventListener("DOMContentLoaded", fetchBooks);
-}
+// Runs fetchBooks only after the DOM has loaded
+document.addEventListener('DOMContentLoaded', fetchBooks);
