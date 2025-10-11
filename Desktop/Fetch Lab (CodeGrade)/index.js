@@ -1,36 +1,18 @@
-// Function to fetch the Game of Thrones books from the API
+// index.js
 function fetchBooks() {
-  // Return the fetch promise so tests can detect it
-  return fetch("https://anapioficeandfire.com/api/books")
-    .then((response) => response.json())
-    .then((books) => {
-      renderBooks(books);
-      return books; // ensure tests get the data back
-    });
+  return fetch("http://localhost:3000/books") // ✅ Return the fetch
+    .then(response => response.json())
+    .then(data => renderBooks(data)); // Pass JSON object to renderBooks()
 }
 
-// Function to display each book title on the page
 function renderBooks(books) {
-  const main = document.querySelector("main");
-
-  if (!main) return;
-
-  main.innerHTML = "";
-
-  books.forEach((book) => {
-    const h2 = document.createElement("h2");
-    h2.textContent = book.name;
-    main.appendChild(h2);
+  const list = document.getElementById("book-list");
+  books.forEach(book => {
+    const li = document.createElement("li");
+    li.textContent = book.title;
+    list.appendChild(li);
   });
 }
 
-// Run fetchBooks when the page finishes loading
-document.addEventListener("DOMContentLoaded", fetchBooks);
-
-// Export for CodeGrade testing environment
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    fetchBooks,
-    renderBooks,
-  };
-}
+// Call fetchBooks so it runs when page loads
+fetchBooks();
