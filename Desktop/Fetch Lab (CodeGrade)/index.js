@@ -1,18 +1,21 @@
-// Fetches the list of Game of Thrones books and renders them on the page
 function fetchBooks() {
-  // Always return the fetch promise so tests can chain .then()
+  // Return the fetch() Promise so tests can spy on it
   return fetch('https://anapioficeandfire.com/api/books')
     .then((response) => response.json())
-    .then((data) => renderBooks(data));
+    .then((books) => {
+      renderBooks(books);
+      return books; // Return data for tests
+    });
 }
 
-// Renders each book name as an <h2> element inside <main>
 function renderBooks(books) {
   const main = document.querySelector('main');
+  if (!main) return;
 
-  // Clear the main element before adding
+  // Clear old content
   main.innerHTML = '';
 
+  // Add each book as an <h2>
   books.forEach((book) => {
     const h2 = document.createElement('h2');
     h2.textContent = book.name;
@@ -20,5 +23,10 @@ function renderBooks(books) {
   });
 }
 
-// Runs fetchBooks only after the DOM has loaded
+// Automatically run when DOM loads
 document.addEventListener('DOMContentLoaded', fetchBooks);
+
+// Export for Node (Mocha testing)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { fetchBooks, renderBooks };
+}
