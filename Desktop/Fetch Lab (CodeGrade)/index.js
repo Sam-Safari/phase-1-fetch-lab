@@ -3,7 +3,7 @@ function fetchBooks() {
     .then(response => response.json())
     .then(data => {
       renderBooks(data);
-      return data;
+      return data; // Return for testing
     });
 }
 
@@ -20,7 +20,7 @@ function renderBooks(books) {
   });
 }
 
-// Node.js environment setup for testing
+// Node.js environment for CodeGrade testing
 if (typeof module !== 'undefined' && module.exports) {
   const fetch = require('node-fetch');
   global.fetch = fetch;
