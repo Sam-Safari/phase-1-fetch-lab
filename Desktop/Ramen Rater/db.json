@@ -1,0 +1,28 @@
+{
+  "ramens": [
+    {
+      "id": 1,
+      "name": "Shoyu Ramen",
+      "restaurant": "Ichiraku",
+      "image": "https://i.imgur.com/1.jpg",
+      "rating": 8,
+      "comment": "Rich and flavorful!"
+    },
+    {
+      "id": 2,
+      "name": "Miso Ramen",
+      "restaurant": "Ramen Ichiban",
+      "image": "https://i.imgur.com/2.jpg",
+      "rating": 9,
+      "comment": "Creamy and savory!"
+    },
+    {
+      "id": 3,
+      "name": "Tonkotsu Ramen",
+      "restaurant": "Kyoto Ramen Bar",
+      "image": "https://i.imgur.com/3.jpg",
+      "rating": 7,
+      "comment": "Good but a little salty."
+    }
+  ]
+}
