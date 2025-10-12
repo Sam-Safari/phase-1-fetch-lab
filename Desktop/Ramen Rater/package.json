@@ -8,11 +8,17 @@
     "server": "json-server --watch db.json",
     "test": "echo \"No test specified\" && exit 0"
   },
-  "keywords": ["ramen", "frontend", "fetch", "api", "phase1"],
+  "keywords": [
+    "ramen",
+    "frontend",
+    "fetch",
+    "api",
+    "phase1"
+  ],
   "author": "Samuel Emanman",
   "license": "MIT",
   "dependencies": {
     "json-server": "^0.17.4",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.0"
   }
 }
