@@ -1,6 +1,9 @@
-// test/indexTest.js
-describe("Basic setup", () => {
-  it("should run mocha successfully", () => {
-    expect(true).to.be.true;
+const { expect } = require('chai');
+const sinon = require('sinon');
+const fetch = require('node-fetch');
+
+describe('fetchBooks', () => {
+  it('fetches books and returns a promise', () => {
+    // Example test structure
   });
 });
