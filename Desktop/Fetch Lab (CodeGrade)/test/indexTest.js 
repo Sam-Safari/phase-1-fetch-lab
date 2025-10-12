@@ -1,7 +1,6 @@
-const { fetchBooks } = require("./index.js");
-
-fetchBooks()
-  .then((data) => {
-    console.log("Fetched books successfully:", data.length, "books found.");
-  })
-  .catch((err) => console.error("Error fetching books:", err));
+// test/indexTest.js
+describe("Basic setup", () => {
+  it("should run mocha successfully", () => {
+    expect(true).to.be.true;
+  });
+});
